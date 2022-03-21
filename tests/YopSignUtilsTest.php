@@ -1,12 +1,12 @@
 <?php
 
-namespace Yeepay\Yop\Sdk\V1\Test;
+namespace Yeepay\Yop\Sdk\V1\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Yeepay\Yop\Sdk\V1\Util\YopSignUtils;
 use Yeepay\Yop\Sdk\V1\YopConfig;
 
-class YopSignUtilsTest extends TestCase {
+class YopSignUtilsTest extends TestCase
+{
 
     /**
      * @test 解密数字信封(RSA)

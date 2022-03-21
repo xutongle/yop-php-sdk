@@ -8,15 +8,12 @@ define("LANGS", "php");
 define("VERSION", "3.1.12");
 define("USERAGENT", LANGS . "/" . VERSION . "/" . PHP_OS . "/" . (array_key_exists('SERVER_SOFTWARE', $_SERVER) ? $_SERVER ['SERVER_SOFTWARE'] : "") . "/Zend Framework/" . zend_version() . "/" . PHP_VERSION . "/" . (array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : "") . "/");
 
-abstract class HTTPRequest
+abstract class HttpRequest
 {
-
     /**
      * 加密
-     * @param string $str 需加密的字符串
-     * @param string $key 密钥
-     * @param string $CIPHER 算法
-     * @param string $MODE 模式
+     * @param $url
+     * @param $request
      * @return bool|string
      */
     static public function curl_request($url, $request)

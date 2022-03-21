@@ -1,18 +1,20 @@
 <?php
-namespace Yeepay\Yop\Sdk\V1\Test;
 
-use PHPUnit\Framework\TestCase;
+namespace Yeepay\Yop\Sdk\V1\Tests;
+
 use Yeepay\Yop\Sdk\V1\YopClient;
 use Yeepay\Yop\Sdk\V1\YopConfig;
 use Yeepay\Yop\Sdk\V1\YopRequest;
 
-class AesTest extends TestCase {
+class AesTest extends TestCase
+{
 
     /**
      * @test Get请求 对称秘钥
      */
-    function get_aes(){
-        YopConfig::$debug=true;
+    function get_aes()
+    {
+        YopConfig::$debug = true;
 
         $appKey = "yop-boss";
         $secretKey = "PdZ74F6sxapgOWJ31QKmYw==";
@@ -30,8 +32,9 @@ class AesTest extends TestCase {
     /**
      * @test Post请求 对称秘钥
      */
-    function post_aes(){
-        YopConfig::$debug=true;
+    function post_aes()
+    {
+        YopConfig::$debug = true;
 
         $appKey = "yop-boss";
         $secretKey = "PdZ74F6sxapgOWJ31QKmYw==";

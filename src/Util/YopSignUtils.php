@@ -29,7 +29,7 @@ abstract class YopSignUtils
      *
      * @return string 返回参数签名值
      */
-    static function sign($params, $ignoreParamNames = '', $secret, $algName = 'sha256'): string
+    static function sign($params, $ignoreParamNames, $secret, $algName = 'sha256')
     {
         $str = '';  //待签名字符串
         //先将参数以其参数名的字典序升序进行排序
@@ -87,9 +87,9 @@ abstract class YopSignUtils
 
     /**
      * 解密数字信封
-     * @param $source 待解密内容
-     * @param $private_Key 商户私钥（用于解密）
-     * @param $public_Key 易宝公钥(用于签名)
+     * @param string $source 待解密内容
+     * @param string $private_Key 商户私钥（用于解密）
+     * @param string $public_Key 易宝公钥(用于签名)
      * @return string 已解密内容
      */
     public static function decrypt($source, $private_Key, $public_Key)
@@ -146,7 +146,7 @@ abstract class YopSignUtils
         }
     }
 
-    static function signRsa($source, $private_Key)
+    public static function signRsa($source, $private_Key)
     {
         $private_key = "-----BEGIN RSA PRIVATE KEY-----\n" .
             wordwrap($private_Key, 64, "\n", true) .
@@ -174,7 +174,7 @@ abstract class YopSignUtils
 
     }
 
-    static function getPrivateKey($filepath, $password)
+    public static function getPrivateKey($filepath, $password)
     {
         //var_dump($filepath);
         $pkcs12 = file_get_contents($filepath);

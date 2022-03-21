@@ -1,8 +1,10 @@
 <?php
 
+namespace Yeepay\Yop\Sdk\V1\Tests;
+
 use Yeepay\Yop\Sdk\V1\Util\YopSignUtils;
 
-class P12Test extends \PHPUnit\Framework\TestCase
+class P12Test extends TestCase
 {
     /**
      * @test not know
@@ -33,10 +35,12 @@ class P12Test extends \PHPUnit\Framework\TestCase
         print_r($prikeyid);
         print_r($pubkeyid);
     }
+
     /**
      * @test
      */
-    function loadP12AndPrint() {
+    function loadP12AndPrint()
+    {
         $result = YopSignUtils::getPrivateKey("xxx.p12", "123456");
         echo $result;
     }
