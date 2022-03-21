@@ -146,7 +146,7 @@ class YopClient
         }
 
         if (YopConfig::$debug) {
-            print_r($response);
+            //print_r($response);
 
             if ($response->validSign == 1) {
                 echo "<br><br>" . "返回结果签名验证成功!";

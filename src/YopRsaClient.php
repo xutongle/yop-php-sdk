@@ -40,7 +40,7 @@ class YopRsaClient
         $authString = $protocolVersion . "/" . $appKey . "/" . $timestamp . "/" . $EXPIRED_SECONDS;
 
         $headersToSignSet = array();
-        array_push($headersToSignSet, "x-yop-request-id");
+        $headersToSignSet[] = "x-yop-request-id";
 
         // Formatting the URL with signing protocol.
         $canonicalURI = HttpUtils::getCanonicalURIPath($methodOrUri);
@@ -123,15 +123,13 @@ class YopRsaClient
         $serverUrl .= (strpos($serverUrl, '?') === false ? '?' : '&') . $YopRequest->toQueryString();
 
         self::SignRsaParameter($methodOrUri, $YopRequest);
-        $response = HttpRequest::curl_request($serverUrl, $YopRequest);
-        return $response;
+        return HttpRequest::curl_request($serverUrl, $YopRequest);
     }
 
     public static function post($methodOrUri, $YopRequest)
     {
         $content = YopRsaClient::postString($methodOrUri, $YopRequest);
-        $response = (new YopRsaClient)->handleRsaResult($YopRequest, $content);
-        return $response;
+        return (new YopRsaClient)->handleRsaResult($YopRequest, $content);
     }
 
     /**
@@ -276,7 +274,7 @@ class YopRsaClient
         return $response;
     }
 
-    public static function richRequest($methodOrUri, $YopRequest): string
+    public static function richRequest($methodOrUri, $YopRequest)
     {
         if (strpos($methodOrUri, YopConfig::$serverRoot)) {
             $methodOrUri = substr($methodOrUri, strlen(YopConfig::$serverRoot) + 1);
@@ -320,7 +318,7 @@ class YopRsaClient
             $response->error->subMessage = $jsoncontent->subMessage;
         }
 
-        print_r($response);
+        //print_r($response);
 
 //        if (!empty($response->sign)) {
 //            $response->validSign = YopRsaClient::isValidRsaResult($jsoncontent->result, $jsoncontent->sign, $YopRequest->yopPublicKey);
